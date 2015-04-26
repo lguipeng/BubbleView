@@ -246,7 +246,6 @@ public class BubbleDrawable extends Drawable {
         }
 
         public Builder angle(float mAngle){
-            //直径为2倍
             this.mAngle = mAngle * 2;
             return this;
         }
@@ -312,8 +311,7 @@ public class BubbleDrawable extends Drawable {
             return getDefault();
         }
 
-        public static ArrowLocation getDefault()
-        {
+        public static ArrowLocation getDefault(){
             return LEFT;
         }
 
