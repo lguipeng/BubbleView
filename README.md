@@ -36,7 +36,7 @@ Copy [`BubbleDrawable.java`](https://github.com/lguipeng/BubbleView/blob/master/
 
 ##Notice
 ###First
-> It is recommaned use like this when you use BubbleImageView,and this will be scaled to fit content
+> It is recommaned to use like this when you use BubbleImageView,and this will be scaled to fit content
 
 ```
 <com.github.library.bubbleview.BubbleImageView
