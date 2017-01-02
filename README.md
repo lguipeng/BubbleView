@@ -14,7 +14,7 @@ allprojects {
 }
 
 dependencies {
-    compile 'com.github.lguipeng:BubbleView:v1.0.1'
+    compile 'com.github.lguipeng:BubbleView:1.0.1'
 }
 ```
 ###Or
