@@ -12,7 +12,7 @@ import com.github.bubbleview.R;
 /**
  * Created by lgp on 2015/3/24.
  */
-public class BubbleTextVew extends TextView {
+public class BubbleTextView extends TextView {
     private BubbleDrawable bubbleDrawable;
     private float mArrowWidth;
     private float mAngle;
@@ -22,17 +22,17 @@ public class BubbleTextVew extends TextView {
     private BubbleDrawable.ArrowLocation mArrowLocation;
     private boolean mArrowCenter;
 
-    public BubbleTextVew(Context context) {
+    public BubbleTextView(Context context) {
         super(context);
         initView(null);
     }
 
-    public BubbleTextVew(Context context, AttributeSet attrs) {
+    public BubbleTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(attrs);
     }
 
-    public BubbleTextVew(Context context, AttributeSet attrs, int defStyle) {
+    public BubbleTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         initView(attrs);
     }
