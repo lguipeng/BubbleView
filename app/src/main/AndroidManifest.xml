@@ -12,6 +12,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.BubbleListActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

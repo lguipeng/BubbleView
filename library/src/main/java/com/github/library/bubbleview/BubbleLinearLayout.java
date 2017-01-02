@@ -75,9 +75,19 @@ public class BubbleLinearLayout extends LinearLayout {
     }
 
     private void setUp(int width, int height){
-        setUp(getPaddingLeft(),  + width - getPaddingRight(),
+        setUp(getPaddingLeft(),  width - getPaddingRight(),
                 getPaddingTop(), height - getPaddingBottom());
         setBackgroundDrawable(bubbleDrawable);
+    }
+
+    public void setUpBubbleDrawable () {
+        setBackgroundDrawable(null);
+        post(new Runnable() {
+            @Override
+            public void run() {
+                setUp(getWidth(), getHeight());
+            }
+        });
     }
 
 }

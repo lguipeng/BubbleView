@@ -1,1 +1,1 @@
-include ':app', ':bubbleview-library', ':library'
+include ':app', ':library'
