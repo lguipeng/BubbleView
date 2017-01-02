@@ -18,7 +18,7 @@ dependencies {
 }
 ```
 ###Or
-Copy [`BubbleDrawable.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleDrawable.java) [`BubbleImageView.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleImageView.java)  [`BubbleTextVew.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleTextVew.java) [`BubbleLinearLayout.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleLinearLayout.java) into your project.
+Copy [`BubbleDrawable.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleDrawable.java) [`BubbleImageView.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleImageView.java)  [`BubbleTextView.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleTextView.java) [`BubbleLinearLayout.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleLinearLayout.java) into your project.
 
 ##Usage
 ```
