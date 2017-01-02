@@ -6,8 +6,15 @@
 ##Import to your project
 ###Gradle
 ```groovy
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+
 dependencies {
-    compile 'com.lguipeng.bubbleview:library:1.0.0'
+    compile 'com.github.lguipeng:BubbleView:v1.0.1'
 }
 ```
 ###Or
