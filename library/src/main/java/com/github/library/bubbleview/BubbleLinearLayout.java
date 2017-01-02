@@ -20,6 +20,7 @@ public class BubbleLinearLayout extends LinearLayout {
     private float mArrowPosition;
     private BubbleDrawable.ArrowLocation mArrowLocation;
     private int bubbleColor;
+    private boolean mArrowCenter;
     public BubbleLinearLayout(Context context) {
         super(context);
         initView(null);
@@ -46,6 +47,7 @@ public class BubbleLinearLayout extends LinearLayout {
                     BubbleDrawable.Builder.DEFAULT_BUBBLE_COLOR);
             int location = array.getInt(R.styleable.BubbleView_arrowLocation, 0);
             mArrowLocation = BubbleDrawable.ArrowLocation.mapIntToValue(location);
+            mArrowCenter = array.getBoolean(R.styleable.BubbleView_arrowCenter, false);
             array.recycle();
         }
     }
@@ -71,6 +73,7 @@ public class BubbleLinearLayout extends LinearLayout {
                 .arrowWidth(mArrowWidth)
                 .arrowPosition(mArrowPosition)
                 .bubbleColor(bubbleColor)
+                .arrowCenter(mArrowCenter)
                 .build();
     }
 

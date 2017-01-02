@@ -8,7 +8,6 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.widget.ImageView;
 
@@ -27,6 +26,7 @@ public class BubbleImageView extends ImageView {
     private float mArrowPosition;
     private Bitmap mBitmap;
     private BubbleDrawable.ArrowLocation mArrowLocation;
+    private boolean mArrowCenter;
     public BubbleImageView(Context context) {
         super(context);
         initView(null);
@@ -55,6 +55,7 @@ public class BubbleImageView extends ImageView {
                     BubbleDrawable.Builder.DEFAULT_ARROW_POSITION);
             int location = array.getInt(R.styleable.BubbleView_arrowLocation, 0);
             mArrowLocation = BubbleDrawable.ArrowLocation.mapIntToValue(location);
+            mArrowCenter = array.getBoolean(R.styleable.BubbleView_arrowCenter, false);
             array.recycle();
         }
     }
@@ -96,10 +97,6 @@ public class BubbleImageView extends ImageView {
     }
 
     private void setUp(int left, int right, int top, int bottom){
-        Log.d("setUp", "left-->" + left);
-        Log.d("setUp", "right-->" + right);
-        Log.d("setUp", "top-->" + top);
-        Log.d("setUp", "bottom-->" + bottom);
         if (right <= left || bottom <= top)
             return;
 
@@ -115,6 +112,7 @@ public class BubbleImageView extends ImageView {
                 .bubbleType(BubbleDrawable.BubbleType.BITMAP)
                 .arrowPosition(mArrowPosition)
                 .bubbleBitmap(mBitmap)
+                .arrowCenter(mArrowCenter)
                 .build();
     }
 
