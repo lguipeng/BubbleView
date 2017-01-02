@@ -22,7 +22,7 @@ Copy [`BubbleDrawable.java`](https://github.com/lguipeng/BubbleView/blob/master/
 
 ##Usage
 ```
-<com.github.library.bubbleview.BubbleTextVew
+<com.github.library.bubbleview.BubbleTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello BubbleTextVew"
