@@ -26,9 +26,12 @@ Copy [`BubbleDrawable.java`](https://github.com/lguipeng/BubbleView/blob/master/
         app:arrowHeight="10dp"
         app:arrowPosition="14dp"
         app:arrowLocation="right"
+        app:arrowCenter="true"
         app:bubbleColor="#7EC0EE"/>
 ```
 `app:arrowLocation` support `left` `right` `top` `bottom`
+
+`app:arrowCenter` will make arrow center in the edge
 
 `app:angle` is the radius of bubble view
 

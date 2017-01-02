@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import com.github.bubbleview.R;
+
 /**
  * Created by lgp on 2015/3/24.
  */
@@ -19,6 +20,8 @@ public class BubbleTextVew extends TextView {
     private float mArrowPosition;
     private int bubbleColor;
     private BubbleDrawable.ArrowLocation mArrowLocation;
+    private boolean mArrowCenter;
+
     public BubbleTextVew(Context context) {
         super(context);
         initView(null);
@@ -34,8 +37,8 @@ public class BubbleTextVew extends TextView {
         initView(attrs);
     }
 
-    private void initView(AttributeSet attrs){
-        if (attrs != null){
+    private void initView(AttributeSet attrs) {
+        if (attrs != null) {
             TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.BubbleView);
             mArrowWidth = array.getDimension(R.styleable.BubbleView_arrowWidth,
                     BubbleDrawable.Builder.DEFAULT_ARROW_WITH);
@@ -49,6 +52,7 @@ public class BubbleTextVew extends TextView {
                     BubbleDrawable.Builder.DEFAULT_BUBBLE_COLOR);
             int location = array.getInt(R.styleable.BubbleView_arrowLocation, 0);
             mArrowLocation = BubbleDrawable.ArrowLocation.mapIntToValue(location);
+            mArrowCenter = array.getBoolean(R.styleable.BubbleView_arrowCenter, false);
             array.recycle();
         }
         setUpPadding();
@@ -62,7 +66,7 @@ public class BubbleTextVew extends TextView {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        if (w > 0 && h > 0){
+        if (w > 0 && h > 0) {
             setUp(w, h);
         }
     }
@@ -80,15 +84,15 @@ public class BubbleTextVew extends TextView {
         super.onDraw(canvas);
     }
 
-    private void setUp(int width, int height){
-        setUp(0, width , 0, height);
+    private void setUp(int width, int height) {
+        setUp(0, width, 0, height);
     }
 
-    private void setUp(){
+    private void setUp() {
         setUp(getWidth(), getHeight());
     }
 
-    private void setUp(int left, int right, int top, int bottom){
+    private void setUp(int left, int right, int top, int bottom) {
         RectF rectF = new RectF(left, top, right, bottom);
         bubbleDrawable = new BubbleDrawable.Builder()
                 .rect(rectF)
@@ -99,15 +103,16 @@ public class BubbleTextVew extends TextView {
                 .arrowWidth(mArrowWidth)
                 .bubbleColor(bubbleColor)
                 .arrowPosition(mArrowPosition)
+                .arrowCenter(mArrowCenter)
                 .build();
     }
 
-    private void setUpPadding(){
+    private void setUpPadding() {
         int left = getPaddingLeft();
         int right = getPaddingRight();
         int top = getPaddingTop();
         int bottom = getPaddingBottom();
-        switch (mArrowLocation){
+        switch (mArrowLocation) {
             case LEFT:
                 left += mArrowWidth;
                 break;
