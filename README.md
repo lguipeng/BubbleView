@@ -1,10 +1,10 @@
 # BubbleView
 
-##Screenshot
+## Screenshot
 ![screenshot](https://github.com/lguipeng/BubbleView/blob/master/screenshot/screenshot.png)
 
-##Import to your project
-###Gradle
+## Import to your project
+### Gradle
 ```groovy
 allprojects {
     repositories {
@@ -17,10 +17,10 @@ dependencies {
     compile 'com.github.lguipeng:BubbleView:1.0.1'
 }
 ```
-###Or
+### Or
 Copy [`BubbleDrawable.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleDrawable.java) [`BubbleImageView.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleImageView.java)  [`BubbleTextView.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleTextView.java) [`BubbleLinearLayout.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleLinearLayout.java) into your project.
 
-##Usage
+## Usage
 ```
 <com.github.library.bubbleview.BubbleTextView
         android:layout_width="wrap_content"
@@ -42,10 +42,10 @@ Copy [`BubbleDrawable.java`](https://github.com/lguipeng/BubbleView/blob/master/
 
 `app:angle` is the radius of bubble view
 
-###You can get more info from [activity_main.xml](https://github.com/lguipeng/BubbleView/blob/master/app/src/main/res/layout/activity_main.xml)
+### You can get more info from [activity_main.xml](https://github.com/lguipeng/BubbleView/blob/master/app/src/main/res/layout/activity_main.xml)
 
-##Notice
-###First
+## Notice
+### First
 > It is recommaned to use like this when you use BubbleImageView,and this will be scaled to fit content
 
 ```
@@ -53,7 +53,7 @@ Copy [`BubbleDrawable.java`](https://github.com/lguipeng/BubbleView/blob/master/
     android:layout_width="180dp"
     android:layout_height="wrap_content" />
 ```
-#####Or
+##### Or
 ```
 <com.github.library.bubbleview.BubbleImageView
     android:layout_width="wrap_content"
@@ -65,10 +65,10 @@ Copy [`BubbleDrawable.java`](https://github.com/lguipeng/BubbleView/blob/master/
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
 ```
-###Second
+### Second
 > if you want to use more bubble ViewGroup, just extend ViewGroup and realize it like [`BubbleLinearLayout.java`](https://github.com/lguipeng/BubbleView/blob/master/library/src/main/java/com/github/library/bubbleview/BubbleLinearLayout.java). 
 
-##License
+## License
 ```
 Copyright 2015 Liaoguipeng
 
