@@ -214,15 +214,13 @@ public class BubbleDrawable extends Drawable {
     }
 
     private void setUpShaderMatrix() {
-        float scale;
         Matrix mShaderMatrix = new Matrix();
         mShaderMatrix.set(null);
         int mBitmapWidth = bubbleBitmap.getWidth();
         int mBitmapHeight = bubbleBitmap.getHeight();
         float scaleX = getIntrinsicWidth() / (float) mBitmapWidth;
         float scaleY = getIntrinsicHeight() / (float) mBitmapHeight;
-        scale = Math.min(scaleX, scaleY);
-        mShaderMatrix.postScale(scale, scale);
+        mShaderMatrix.postScale(scaleX, scaleY);
         mShaderMatrix.postTranslate(mRect.left, mRect.top);
         mBitmapShader.setLocalMatrix(mShaderMatrix);
     }
