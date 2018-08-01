@@ -19,7 +19,7 @@ public class BubbleLinearLayout extends LinearLayout {
     private float mArrowHeight;
     private float mArrowPosition;
     private BubbleDrawable.ArrowLocation mArrowLocation;
-    private int bubbleColor;
+    public int bubbleColor;
     private boolean mArrowCenter;
     public BubbleLinearLayout(Context context) {
         super(context);
@@ -29,6 +29,11 @@ public class BubbleLinearLayout extends LinearLayout {
     public BubbleLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(attrs);
+    }
+
+    public void setBubbleColor(int color)
+    {
+        bubbleColor=color;
     }
 
 
