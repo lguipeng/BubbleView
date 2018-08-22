@@ -35,7 +35,10 @@ public class BubbleLinearLayout extends LinearLayout {
     {
         bubbleColor=color;
     }
-
+    public void setArrowPosition(float a)
+    {
+        mArrowPosition=a;
+    }
 
     private void initView(AttributeSet attrs){
         if (attrs != null){
