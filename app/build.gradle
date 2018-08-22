@@ -6,10 +6,10 @@ android {
 
     defaultConfig {
         applicationId "com.github.bubbleview"
-        minSdkVersion 9
+        minSdkVersion 10
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.3"
     }
     buildTypes {
         release {
