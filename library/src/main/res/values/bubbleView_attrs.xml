@@ -12,6 +12,10 @@
             <enum name="right" value="0x01" />
             <enum name="top" value="0x02" />
             <enum name="bottom" value="0x03" />
+            <enum name="left_bottom" value="0x04" />
+            <enum name="right_bottom" value="0x05" />
+            <enum name="top_right" value="0x06" />
+            <enum name="bottom_right" value="0x07" />
         </attr>
     </declare-styleable>
 </resources>

@@ -84,6 +84,18 @@ public class BubbleDrawable extends Drawable {
             case BOTTOM:
                 setUpBottomPath(mRect, path);
                 break;
+            case LEFT_BOTTOM:
+                setUpLeftBottomPath(mRect, path);
+                break;
+            case RIGHT_BOTTOM:
+                setUpRightBottomPath(mRect, path);
+                break;
+            case TOP_RIGHT:
+                setUpTopRightPath(mRect, path);
+                break;
+            case BOTTOM_RIGHT:
+                setUpBottomRightPath(mRect, path);
+                break;
         }
     }
 
@@ -132,6 +144,32 @@ public class BubbleDrawable extends Drawable {
         path.close();
     }
 
+    private void setUpLeftBottomPath(RectF rect, Path path) {
+
+        if (mArrowCenter) {
+            mArrowPosition = (rect.bottom - rect.top) / 2 - mArrowWidth / 2;
+        }
+
+        path.moveTo(mArrowWidth + rect.left + mAngle, rect.top);
+        path.lineTo(rect.width() - mAngle, rect.top);
+        path.arcTo(new RectF(rect.right - mAngle, rect.top, rect.right,
+                mAngle + rect.top), 270, 90);
+        path.lineTo(rect.right, rect.bottom - mAngle);
+        path.arcTo(new RectF(rect.right - mAngle, rect.bottom - mAngle,
+                rect.right, rect.bottom), 0, 90);
+        path.lineTo(rect.left + mArrowWidth + mAngle, rect.bottom);
+        path.arcTo(new RectF(rect.left + mArrowWidth, rect.bottom - mAngle,
+                mAngle + rect.left + mArrowWidth, rect.bottom), 90, 90);
+
+        path.lineTo(rect.left + mArrowWidth, rect.height() - mArrowPosition);
+        path.lineTo(rect.left, rect.height() - mArrowPosition - mArrowHeight / 2);
+        path.lineTo(rect.left + mArrowWidth, rect.height() - mArrowPosition - mArrowHeight);
+        path.lineTo(rect.left + mArrowWidth, rect.top + mAngle);
+        path.arcTo(new RectF(rect.left + mArrowWidth, rect.top, mAngle
+                + rect.left + mArrowWidth, mAngle + rect.top), 180, 90);
+        path.close();
+    }
+
     private void setUpTopPath(RectF rect, Path path) {
 
         if (mArrowCenter) {
@@ -143,6 +181,34 @@ public class BubbleDrawable extends Drawable {
         path.lineTo(rect.left + mArrowWidth / 2 + mArrowPosition, rect.top);
         path.lineTo(rect.left + mArrowWidth + mArrowPosition, rect.top + mArrowHeight);
         path.lineTo(rect.right - mAngle, rect.top + mArrowHeight);
+
+        path.arcTo(new RectF(rect.right - mAngle,
+                rect.top + mArrowHeight, rect.right, mAngle + rect.top + mArrowHeight), 270, 90);
+        path.lineTo(rect.right, rect.bottom - mAngle);
+
+        path.arcTo(new RectF(rect.right - mAngle, rect.bottom - mAngle,
+                rect.right, rect.bottom), 0, 90);
+        path.lineTo(rect.left + mAngle, rect.bottom);
+
+        path.arcTo(new RectF(rect.left, rect.bottom - mAngle,
+                mAngle + rect.left, rect.bottom), 90, 90);
+        path.lineTo(rect.left, rect.top + mArrowHeight + mAngle);
+        path.arcTo(new RectF(rect.left, rect.top + mArrowHeight, mAngle
+                + rect.left, mAngle + rect.top + mArrowHeight), 180, 90);
+        path.close();
+    }
+
+    private void setUpTopRightPath(RectF rect, Path path) {
+
+        if (mArrowCenter) {
+            mArrowPosition = (rect.right - rect.left) / 2 - mArrowWidth / 2;
+        }
+
+        path.moveTo(rect.left + mAngle, rect.top + mArrowHeight);
+        path.lineTo(rect.width() - mArrowPosition - mArrowWidth, rect.top + mArrowHeight);
+        path.lineTo(rect.width() - mArrowPosition - mArrowWidth / 2, rect.top);
+        path.lineTo(rect.width() - mArrowPosition, rect.top + mArrowHeight);
+        path.lineTo(rect.width() - Math.min(mArrowPosition, mAngle), rect.top + mArrowHeight);
 
         path.arcTo(new RectF(rect.right - mAngle,
                 rect.top + mArrowHeight, rect.right, mAngle + rect.top + mArrowHeight), 270, 90);
@@ -187,6 +253,33 @@ public class BubbleDrawable extends Drawable {
         path.close();
     }
 
+    private void setUpRightBottomPath(RectF rect, Path path) {
+
+        if (mArrowCenter) {
+            mArrowPosition = (rect.bottom - rect.top) / 2 - mArrowWidth / 2;
+        }
+
+        path.moveTo(rect.left + mAngle, rect.top);
+        path.lineTo(rect.width() - mAngle - mArrowWidth, rect.top);
+        path.arcTo(new RectF(rect.right - mAngle - mArrowWidth,
+                rect.top, rect.right - mArrowWidth, mAngle + rect.top), 270, 90);
+        path.lineTo(rect.right - mArrowWidth, mRect.height() - mArrowPosition - mArrowHeight);
+        path.lineTo(rect.right, mRect.height() - mArrowPosition - mArrowHeight / 2);
+        path.lineTo(rect.right - mArrowWidth, mRect.height() - mArrowPosition);
+        path.lineTo(rect.right - mArrowWidth, rect.bottom - mAngle);
+
+        path.arcTo(new RectF(rect.right - mAngle - mArrowWidth, rect.bottom - mAngle,
+                rect.right - mArrowWidth, rect.bottom), 0, 90);
+        path.lineTo(rect.left + mArrowWidth, rect.bottom);
+
+        path.arcTo(new RectF(rect.left, rect.bottom - mAngle,
+                mAngle + rect.left, rect.bottom), 90, 90);
+
+        path.arcTo(new RectF(rect.left, rect.top, mAngle
+                + rect.left, mAngle + rect.top), 180, 90);
+        path.close();
+    }
+
     private void setUpBottomPath(RectF rect, Path path) {
         if (mArrowCenter) {
             mArrowPosition = (rect.right - rect.left) / 2 - mArrowWidth / 2;
@@ -204,6 +297,32 @@ public class BubbleDrawable extends Drawable {
         path.lineTo(rect.left + mArrowPosition + mArrowWidth / 2, rect.bottom);
         path.lineTo(rect.left + mArrowPosition, rect.bottom - mArrowHeight);
         path.lineTo(rect.left + Math.min(mAngle, mArrowPosition), rect.bottom - mArrowHeight);
+
+        path.arcTo(new RectF(rect.left, rect.bottom - mAngle - mArrowHeight,
+                mAngle + rect.left, rect.bottom - mArrowHeight), 90, 90);
+        path.lineTo(rect.left, rect.top + mAngle);
+        path.arcTo(new RectF(rect.left, rect.top, mAngle
+                + rect.left, mAngle + rect.top), 180, 90);
+        path.close();
+    }
+
+    private void setUpBottomRightPath(RectF rect, Path path) {
+        if (mArrowCenter) {
+            mArrowPosition = (rect.right - rect.left) / 2 - mArrowWidth / 2;
+        }
+        path.moveTo(rect.left + mAngle, rect.top);
+        path.lineTo(rect.width() - mAngle, rect.top);
+        path.arcTo(new RectF(rect.right - mAngle,
+                rect.top, rect.right, mAngle + rect.top), 270, 90);
+
+        path.lineTo(rect.right, rect.bottom - mArrowHeight - mAngle);
+        path.arcTo(new RectF(rect.right - mAngle, rect.bottom - mAngle - mArrowHeight,
+                rect.right, rect.bottom - mArrowHeight), 0, 90);
+
+        path.lineTo(rect.width() - mArrowPosition - mArrowWidth, rect.bottom - mArrowHeight);
+        path.lineTo(rect.width() - mArrowPosition - mArrowWidth / 2, rect.bottom);
+        path.lineTo(rect.width() - mArrowPosition, rect.bottom - mArrowHeight);
+        path.lineTo(rect.width() - Math.min(mAngle, mArrowPosition), rect.bottom - mArrowHeight);
 
         path.arcTo(new RectF(rect.left, rect.bottom - mAngle - mArrowHeight,
                 mAngle + rect.left, rect.bottom - mArrowHeight), 90, 90);
@@ -316,7 +435,11 @@ public class BubbleDrawable extends Drawable {
         LEFT(0x00),
         RIGHT(0x01),
         TOP(0x02),
-        BOTTOM(0x03);
+        BOTTOM(0x03),
+        LEFT_BOTTOM(0x04),
+        RIGHT_BOTTOM(0x05),
+        TOP_RIGHT(0x06),
+        BOTTOM_RIGHT(0x07);
 
         private int mValue;
 
