@@ -3,10 +3,13 @@ package com.github.library.bubbleview;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.RectF;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import com.github.bubbleview.R;
+
+import skin.support.content.res.SkinCompatResources;
 
 
 /**
@@ -21,6 +24,8 @@ public class BubbleLinearLayout extends LinearLayout {
     private BubbleDrawable.ArrowLocation mArrowLocation;
     private int bubbleColor;
     private boolean mArrowCenter;
+    private int bubbleColorResId;
+
     public BubbleLinearLayout(Context context) {
         super(context);
         initView(null);
@@ -32,8 +37,8 @@ public class BubbleLinearLayout extends LinearLayout {
     }
 
 
-    private void initView(AttributeSet attrs){
-        if (attrs != null){
+    private void initView(AttributeSet attrs) {
+        if (attrs != null) {
             TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.BubbleView);
             mArrowWidth = array.getDimension(R.styleable.BubbleView_arrowWidth,
                     BubbleDrawable.Builder.DEFAULT_ARROW_WITH);
@@ -43,8 +48,11 @@ public class BubbleLinearLayout extends LinearLayout {
                     BubbleDrawable.Builder.DEFAULT_ANGLE);
             mArrowPosition = array.getDimension(R.styleable.BubbleView_arrowPosition,
                     BubbleDrawable.Builder.DEFAULT_ARROW_POSITION);
-            bubbleColor = array.getColor(R.styleable.BubbleView_bubbleColor,
-                    BubbleDrawable.Builder.DEFAULT_BUBBLE_COLOR);
+            bubbleColorResId = array.getResourceId(R.styleable.BubbleView_bubbleColor, 0);
+            if (bubbleColorResId <= 0) {
+                bubbleColor = array.getColor(R.styleable.BubbleView_bubbleColor,
+                        BubbleDrawable.Builder.DEFAULT_BUBBLE_COLOR);
+            }
             int location = array.getInt(R.styleable.BubbleView_arrowLocation, 0);
             mArrowLocation = BubbleDrawable.ArrowLocation.mapIntToValue(location);
             mArrowCenter = array.getBoolean(R.styleable.BubbleView_arrowCenter, false);
@@ -52,18 +60,28 @@ public class BubbleLinearLayout extends LinearLayout {
         }
     }
 
+    private void initBubbleColor(final int bubbleColorResId) {
+        boolean isNightModeOn = !SkinCompatResources.getInstance().isDefaultSkin();
+        if (isNightModeOn) {
+            bubbleColor = SkinCompatResources.getInstance().getColor(getContext(), bubbleColorResId);
+        } else {
+            bubbleColor = ContextCompat.getColor(getContext(), bubbleColorResId);
+        }
+    }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        if (w > 0 && h > 0){
+        if (w > 0 && h > 0) {
             setUp(w, h);
         }
     }
 
-    private void setUp(int left, int right, int top, int bottom){
+    private void setUp(int left, int right, int top, int bottom) {
         if (right < left || bottom < top)
             return;
         RectF rectF = new RectF(left, top, right, bottom);
+        initBubbleColor(bubbleColorResId);
         bubbleDrawable = new BubbleDrawable.Builder()
                 .rect(rectF)
                 .arrowLocation(mArrowLocation)
@@ -77,13 +95,13 @@ public class BubbleLinearLayout extends LinearLayout {
                 .build();
     }
 
-    private void setUp(int width, int height){
-        setUp(getPaddingLeft(),  width - getPaddingRight(),
+    private void setUp(int width, int height) {
+        setUp(getPaddingLeft(), width - getPaddingRight(),
                 getPaddingTop(), height - getPaddingBottom());
         setBackgroundDrawable(bubbleDrawable);
     }
 
-    public void setUpBubbleDrawable () {
+    public void setUpBubbleDrawable() {
         setBackgroundDrawable(null);
         post(new Runnable() {
             @Override
